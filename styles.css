@@ -513,7 +513,7 @@ body {
 
 /* ===== SEÇÃO DE SERVIÇOS PREMIUM ===== */
 .services {
-    padding: 6rem 0;
+    padding: 6rem 1rem; /* Adicionado padding lateral para segurança */
     background: var(--branco);
 }
 
@@ -569,10 +569,12 @@ body {
     border-radius: 50px;
     font-size: 0.75rem;
     font-weight: 600;
+    z-index: 10;
 }
 
 .service-content {
     padding: 2rem;
+    padding-top: 3rem; /* Adiciona espaço extra no topo para o badge */
 }
 
 .service-content h3 {
@@ -581,6 +583,7 @@ body {
     font-weight: 600;
     color: var(--azul-institucional);
     margin-bottom: 1rem;
+    margin-top: 0.5rem; /* Adiciona margem superior para evitar sobreposição */
 }
 
 .service-content p {
@@ -612,6 +615,68 @@ body {
     color: var(--cinza-escuro);
 }
 
+@media (max-width: 992px) {
+    .services {
+        padding: 4rem 1rem; /* Reduz o padding geral da seção */
+    }
+
+    .services-grid {
+        /* Diminui o tamanho mínimo do card para caber melhor em telas de tablet */
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .service-content {
+        padding: 1.5rem; /* Menos padding interno no card */
+        padding-top: 2.5rem; /* Mantém espaço para o badge em tablets */
+    }
+
+    .service-content h3 {
+        font-size: 1.3rem; /* Título um pouco menor */
+    }
+}
+
+
+/* Para telas de celulares (até 576px) */
+@media (max-width: 576px) {
+    .services {
+        padding: 3rem 1rem;
+    }
+
+    .services-grid {
+        /* Força uma única coluna em telas muito pequenas */
+        grid-template-columns: 1fr;
+    }
+
+    .service-image {
+        height: 200px; /* Reduz a altura da imagem para economizar espaço */
+    }
+
+    .service-content {
+        padding: 1.5rem;
+        padding-top: 2.5rem; /* Mantém espaço para o badge em celulares */
+    }
+
+    .service-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .service-content p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-features {
+        margin-bottom: 1rem;
+    }
+
+    .service-footer {
+        /* Empilha os itens do rodapé verticalmente */
+        flex-direction: column;
+        align-items: flex-start; /* Alinha os itens à esquerda */
+        gap: 0.75rem; /* Adiciona espaço entre os itens empilhados */
+    }
+}
 /* ===== SEÇÃO DE CERTIFICAÇÕES ===== */
 .certifications {
     padding: 6rem 0;
@@ -1004,9 +1069,28 @@ body {
     }
     
     /* Hero section mobile */
+    .hero .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
     .hero-content {
         padding: 40px 0;
         text-align: center;
+        order: 1;
+    }
+    
+    .hero-image {
+        order: 2;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
     }
     
     .hero h1 {
@@ -1121,8 +1205,23 @@ body {
         font-size: 1.8rem;
     }
     
+    .hero .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    
     .hero h1 {
         font-size: 2.2rem;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+    }
+    
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 18px;
     }
     
     .hero-stats {
